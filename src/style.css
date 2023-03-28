@@ -1,17 +1,39 @@
 .formContainer{
-    width : 20vw;
+    margin-left: 650px;
+    margin-top: 190px;
+    height: 300px;
+    width : 26vw;
     min-height: 20vh;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     font-size: calc(10px + 2vmin);
     border: "2px solid black";
-    background-color: #670195 ;
+    background-color: #E5D1FA ;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
     
+}
+.form-elements{
+    margin-top: 37px;
 }
 
 .links{
-    color: #E3CCAE;
+    color:yellow
 }
+input{
+    display: block;
+    margin-left: 83px;
+    margin-top: 10px;
+}
+.button{
+    display: block;
+    margin-left: 143px;
+    margin-top: 10px;
 
+}
+.child-div{
+    display: flex;
+    justify-content: space-between;
+    
+}
