@@ -6,7 +6,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { doc, setDoc } from "firebase/firestore"; 
 import { useDispatch, useSelector } from "react-redux"
 import {user} from "../Redux/action"
-import Add from "../assets/download.jpeg"
+import { Spinner } from "../components/Spinner";
 
 function Register() {
 
@@ -15,10 +15,6 @@ function Register() {
     const storage = getStorage(app);
     const [err, setErr] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
-
-   
-         
-
 
   const userinfo = useSelector((store) => store.credential.user)
 
@@ -126,33 +122,43 @@ function Register() {
     return (
         <div>
 
-            <div className='formContainer'>
-                <span className='links' >Register to chat app</span>
-                <form onSubmit={handleSubmit} className='form-elements'>
-                    <div className='child-div'>
-                    <label htmlFor="">Display name :</label>
-                    <input type="text" name="displayName" id="displayName" />
-                    </div>
-                    <div className='child-div'>
-                    <label htmlFor="">Email :</label>
-                    <input type="email" name="email" id="email" />
-                    </div>
-                    <div className='child-div'>
-                    <label htmlFor="">password :</label>
-                    <input type="password"  name="password" id="password" />
-                    </div>
-                    <div className='child-div'>
-                    <input type="file" style={{ display: "none" }} name="photoURL" id="photoURL" />
-                        <label htmlFor="photoURL">
-                            <img  width="28px" height="28px" src={Add} alt="" />
-                            <span>Add an avatar</span>
-                        </label>
-                    </div>
-                    
-                    <input type="submit" value="Submit" className='button'/>
-                </form>
-                <p>Already have an account ?<span onClick={() => navigate("/login")} className='links'>Login</span></p>
-            </div>
+          {
+            loading ?(
+              <Spinner/>
+         
+        ) : (
+
+          <div className='formContainer'>
+        
+          <form onSubmit={handleSubmit} className='form-elements'>
+          <span className='links' >Register to chat app</span>
+              <div className='child-div'>
+              <label htmlFor="">Display name :</label>
+              <input type="text" autoComplete='off'required name="displayName" id="displayName" />
+              </div>
+              <div className='child-div'>
+              <label htmlFor="">Email :</label>
+              <input type="email" autoComplete='off' required name="email" id="email" />
+              </div>
+              <div className='child-div'>
+              <label htmlFor="">password :</label>
+              <input type="password" autoComplete='off' required name="password" id="password" />
+              </div>
+              <div>
+              <input type="file" required name="photoURL" id="photoURL" />
+                
+              </div>
+              
+              <input type="submit" value="Submit" className='button'/>
+              <p>Already have an account ?<span onClick={() => navigate("/login")} className='links'>Login</span></p>
+          </form>
+          
+      </div>
+            
+        )
+          }
+
+            
 
 
         </div>

@@ -33,6 +33,7 @@ const handleSubmit = (e)=>{
                 
             })
             .catch((error) => {
+                alert(error.message)
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage)
