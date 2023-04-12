@@ -29,6 +29,7 @@ const handleSubmit = (e)=>{
 
     signInWithEmailAndPassword(auth, loginCredentials.email, loginCredentials.password)
             .then((userCredential) => {
+                sessionStorage.setItem("usertoken",JSON.stringify(userCredential.user))
                  dispatch(user(userCredential.user));
                 
             })
